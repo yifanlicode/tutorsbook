@@ -2,7 +2,7 @@
 
 Tutors Book is a Ruby on Rails web application that provides a convenient platform for managing and contacting tutors' information.
 
-[Imgur](https://i.imgur.com/DpLZAY1.png)
+<img src="/app/assets/images/tutors.png" alt="tutors scripts" width="600">
 
 ### Installation:
 1. Clone the repository to your local machine.
