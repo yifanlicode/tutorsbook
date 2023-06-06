@@ -1,0 +1,74 @@
+<%= form_with(model: tutor, class: "my-4") do |form| %>
+  <% if tutor.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
+
+      <ul>
+        <% tutor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%# show the form %>
+  <div class="mb-3">
+    <%= form.text_field :first_name, class: "form-control placeholder-gray",
+        placeholder:"First Name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :last_name, class: "form-control placeholder-gray ",
+    placeholder:"Last Name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :email, class: "form-control placeholder-gray",
+    placeholder:"Email" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :phone, class: "form-control placeholder-gray",
+    placeholder:"Phone Number" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :school_name, class: "form-control placeholder-gray",
+    placeholder:"School Name" %>
+  </div>
+  
+ 
+
+  <div class="mb-3">
+  <%= form.date_field :birthday_date, class: "form-control", 
+    input_html: { class: "custom-date-field" } %>
+</div>
+
+ <div class="mb-3">
+  <small class="text-muted"> * Please enter tutor's birthday date</small>
+  <%= form.number_field :member_id,
+    id: :tutor_member_id, class: "form-control", value: current_member.id, type: :hidden %>
+</div>
+
+
+
+ <div class="my-3">
+  <div class="row justify-content-center">
+  <div class="col-auto">
+      <%= link_to "Back to tutors",
+          tutors_path,
+          class: "btn btn-secondary" %>
+    </div>
+    <div class="col-auto">
+         <%= form.submit "Update this tutor", 
+         class: "btn btn-primary" %>
+
+    </div>
+    <div class="col-auto">
+        <%= link_to 'Delete this tutor', @tutor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-dark" %>
+
+    </div>
+  </div>
+</div>
+
+<% end %>

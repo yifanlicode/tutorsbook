@@ -1,0 +1,28 @@
+<%= render @tutor %>
+
+ <div class="my-3">
+  <div class="row justify-content-center">
+  <div class="col-auto">
+      <%= link_to "Back to tutors",
+          tutors_path,
+          class: "btn btn-secondary" %>
+    </div>
+    <div class="col-auto">
+      <%= link_to "Edit this tutor",
+          edit_tutor_path(@tutor),
+          class: "btn btn-primary" %>
+    </div>
+    <div class="col-auto">
+      <%= button_to "Delete this tutor",
+          @tutor,
+          class: "btn btn-dark",
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+    </div>
+  </div>
+</div>
+
+
+<%# Path: app/views/tutors/_tutor.html.erb %>
+
+

@@ -1,0 +1,73 @@
+<nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary" 
+  data-bs-theme="dark">
+  <div class="container-fluid">
+  <%= link_to 'Tutors Book', root_path, class: "navbar-brand" %>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      
+    <% if member_signed_in? %>
+      <li class="nav-item ms-lg-2">
+      <%= link_to "Add Tutor", new_tutor_path, class: "nav-link #{'active' if controller_name == 'tutors' && action_name == 'new'}" %>
+      </li>
+
+
+      <li class="nav-item ms-lg-2">
+        <%= link_to "Tutor List", tutors_path, 
+        class: "nav-link #{'active' if controller_name == 'tutors' && action_name == 'index'}" %>
+      </li>    
+
+      <li class="nav-item ms-lg-2">
+           <%= link_to "About Us",
+          home_about_path,class:"nav-link #{'active' if controller_name == 'home' && action_name == 'about'}"
+          %>
+      </li>
+      <form class="d-flex ms-lg-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    
+       <li class="nav-item ms-lg-2 ">
+        <%= link_to "Edit Profile",edit_member_registration_path,
+        class:"nav-link #{'active' if controller_name == 'registrations' && action_name == 'edit'}"
+            %>
+        </li>
+        
+       <li class="nav-item ms-lg-2 ">
+        <%= link_to "Log Out", destroy_member_session_path,
+         data: { turbo: false }, method: :delete, class: "nav-link" %>
+        </li>
+      <% else %>
+
+      <li class="nav-item">
+           <%= link_to "About Us",
+          home_about_path,class:"nav-link #{'active' if controller_name == 'home' && action_name == 'about'}"
+          %>
+      </li>
+          <li class="nav-item ms-lg-2">
+      <%= link_to "Sign Up",
+      new_member_registration_path,class:"nav-link #{'active' if controller_name == 'registrations' && action_name == 'new'}"
+          %>
+      </li>
+          <li class="nav-item ms-lg-2">
+      <%= link_to "Log In ",
+      new_member_session_path,class:"nav-link #{'active' if controller_name == 'sessions' && action_name == 'new'}"
+          %>
+      </li>
+      <% end %>
+        
+
+      
+
+    
+
+    </ul>
+  
+  </div>
+</div>
+</nav>
+<br>

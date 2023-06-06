@@ -1,0 +1,56 @@
+<%# if member is signed in, show the tutors list %>
+
+<% if member_signed_in? %> 
+    <table class="table table-hover table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+        <th> Name </th>
+        <th> Email </th>
+        <th> Phone </th>
+        <th> School </th>
+        <th> Birthday </th>
+        <th></th>
+        </tr>
+    </thead>
+
+        <tbody>
+        <% @tutors.each do |tutor| %>
+                <% if tutor.member == current_member %>
+
+                <tr>
+
+                <%# show %>
+                <td>
+                    <%= link_to tutor.first_name + ' ' + tutor.last_name, tutor %>
+                   </td>
+
+                <td><%= tutor.email %></td>
+                <td><%= tutor.phone %></td>
+                <td><%= tutor.school_name %></td>
+                <td><%= tutor.birthday_date%></td>
+
+            
+                <td>
+                    <%= button_to 'Delete', 
+                    tutor, 
+                    method: :delete, 
+                    data: { confirm: 'Are you sure?' }, 
+                    class: "btn btn-outline-danger btn-sm" %>
+                </td>
+                <% end %>   
+                </tr>    
+        <% end %>
+
+        </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to "New tutor", 
+        new_tutor_path,
+        class:"btn btn-primary" %>
+
+    <br>
+    <br>
+    
+<% end %>
